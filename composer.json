@@ -21,12 +21,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Riettotek\\Flashmsg\\": "src/"
+            "Riettotek\\FlashMsg\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Riettotek\\Flashmsg\\Test\\": "tests"
+            "Riettotek\\FlashMsg\\Test\\": "tests"
         }
     },
     "scripts": {
@@ -43,10 +43,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Riettotek\\Flashmsg\\Providers\\FlashmsgServiceProvider"
+                "Riettotek\\FlashMsg\\Providers\\FlashMsgServiceProvider"
             ],
             "aliases": {
-                "Flashmsg": "Riettotek\\Flashmsg\\Flashmsg"
+                "FlashMsg": "Riettotek\\FlashMsg\\FlashMsg"
             }
         }
     }

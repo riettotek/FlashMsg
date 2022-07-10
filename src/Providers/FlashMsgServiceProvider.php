@@ -3,9 +3,10 @@
 namespace Riettotek\FlashMsg\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
 use Riettotek\FlashMsg\FlashMsg;
 
-class ShareServiceProvider extends ServiceProvider
+class FlashMsgServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -13,6 +14,7 @@ class ShareServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadViewsFrom(__DIR__.'../views/components', 'flashmsg');
+        Blade::component('flashmsg', FlashMsg::class);
 
         $this->publishes([
             __DIR__ . '/../../config/flashmsg.php' => config_path('flashmsg.php'),
