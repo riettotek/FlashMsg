@@ -35,5 +35,7 @@ class FlashMsgServiceProvider extends ServiceProvider
         });
 
         $this->mergeConfigFrom(__DIR__ . '/../../config/flashmsg.php', 'flashmsg');
+        view()->composer('*',['msgs'=>$messages = FlashMsg::messages()]);
+        
     }
 }

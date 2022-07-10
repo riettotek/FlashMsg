@@ -19,17 +19,17 @@ class FlashMsg
         return self::message('success', $message, $mobile ?? $message);
     }
 
-    protected static function info($message, $mobile = null)
+    public static function info($message, $mobile = null)
     {
         return self::message('info', $message, $mobile ?? $message);
     }
 
-    protected static function warning($message, $mobile = null)
+    public static function warning($message, $mobile = null)
     {
         return self::message('warning', $message, $mobile ?? $message);
     }
 
-    protected static function danger($message, $mobile = null)
+    public static function danger($message, $mobile = null)
     {
         return self::message('danger', $message, $mobile ?? $message);
     }

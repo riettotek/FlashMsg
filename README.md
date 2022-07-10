@@ -16,33 +16,11 @@ FlashMsg::danger('An unknown error occured.');
 composer require riettotek/flashmsg
 ```
 
-2. On "boot()" method of `app/Providers/AppServiceProvider.php`
-
+2. If dont have auto discover, paste this line within providers array in config/app.php
 ```
-namespace App\Providers;
-
-use Illuminate\Support\ServiceProvider; 
-
-use App\Components\FlashMessages;
-
-class AppServiceProvider extends ServiceProvider
-{
-  use FlashMessages;
-
-    public function boot()
-    {
-        view()->composer('partials.messages', function ($view) {
-
-          $messages = self::messages();
-
-          return $view->with('messages', $messages);
-      });
-    }
-
-    ...
-}
+    Riettotek\FlashMsg\Providers\FlashMsgServiceProvider::class
 ```
-4. Then include  the component for messages in your template, where u prefer
+3. Then include  the component for messages in your template, where u prefer
 ```
 <x-flashmsg/>
 ```
