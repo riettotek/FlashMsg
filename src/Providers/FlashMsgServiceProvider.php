@@ -31,6 +31,7 @@ class FlashMsgServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(FlashMsg::class, function () {
+            View::share('alert_bag', FlashMsg::messages());
             return new FlashMsg();
         });
 

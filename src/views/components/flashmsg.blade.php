@@ -1,6 +1,6 @@
-@if (count($messages))
+@if (count($alert_bag))
 
- @foreach ($messages as $message)
+ @foreach ($alert_bag as $message)
  
    @php
     $bg-alert;
