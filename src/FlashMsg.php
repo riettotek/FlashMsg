@@ -9,7 +9,7 @@ class FlashMsg
         if (session()->has('messages')) {
             $messages = session()->pull('messages');
         }
-        $messages[] = $message = ['level' => $level, 'message' => $message, 'mobile' => $mobileMessage];
+        $messages[] = $message = ['level' => $level, 'message' => $message, 'mobile' => $mobileMessage, 'bg'=>config('flashmsg.classes.'.$level)];
         session()->flash('messages', $messages);
         return $message;
     }

@@ -2,9 +2,12 @@
 
 namespace Riettotek\FlashMsg\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
 use Riettotek\FlashMsg\FlashMsg;
+use Riettotek\FlashMsg\RenderAlerts;
+
 
 class FlashMsgServiceProvider extends ServiceProvider
 {
@@ -13,16 +16,17 @@ class FlashMsgServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'../views/components', 'flashmsg');
-        Blade::component('flashmsg', FlashMsg::class);
+        
+        Blade::component('renderalerts', RenderAlerts::class);
+        Blade::directive('alertsmsg', function() {$this->eof();});
 
         $this->publishes([
             __DIR__ . '/../../config/flashmsg.php' => config_path('flashmsg.php'),
         ], 'config');
 
-        // $this->publishes([
-        //     __DIR__ . '/../views/components/flashmsg.php' => resource_path('views/components/flashmsg.blade.php'),
-        // ], 'view');
+        $this->publishes([
+            __DIR__ . '/../view/component/alertsmsg.blade.php' => resource_path('views/components/alertsmsg.blade.php'),
+        ], 'view');
     }
 
     /**
@@ -31,12 +35,22 @@ class FlashMsgServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(FlashMsg::class, function () {
-            View::share('alert_bag', FlashMsg::messages());
+            View::share('alertmsgs', FlashMsg::messages());
             return new FlashMsg();
         });
-
         $this->mergeConfigFrom(__DIR__ . '/../../config/flashmsg.php', 'flashmsg');
-        view()->composer('*',['msgs'=>$messages = FlashMsg::messages()]);
-        
+    }
+
+    private function eof()
+    {
+        return '<?php if(!empty($flashmsg = FlashMsg::messages())){ 
+            echo config("flashmsg.wrapper.prefix");
+            foreach($flashmsg as $m){ 
+            echo "<li class=\"".$m["bg"]."\">";
+            print( $m["message"]);
+            echo "</li>";
+            }
+            echo config("flashmsg.wrapper.suffix");
+        } ?>';
     }
 }
