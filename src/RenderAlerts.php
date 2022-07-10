@@ -1,10 +1,10 @@
 <?php
 
-namespace Riettotek\View\Components;
+namespace Riettotek\FlashMsg;
 
 use Illuminate\View\Component;
 
-class FlashmsgComponent extends Component
+class RenderAlerts extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class FlashmsgComponent extends Component
      */
     public function render()
     {
-        return view('components.flashmsg');
+       return view('components.alertsmsg');
     }
 }
