@@ -13,6 +13,7 @@ class FlashMsgServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadViewsFrom(__DIR__.'../views/components', 'flashmsg');
+        Blade::component('flashmsg', FlashMsg::class);
 
         $this->publishes([
             __DIR__ . '/../../config/flashmsg.php' => config_path('flashmsg.php'),
