@@ -5,7 +5,7 @@ namespace Riettotek\FlashMsg\Providers;
 use Illuminate\Support\ServiceProvider;
 use Riettotek\FlashMsg\FlashMsg;
 
-class ShareServiceProvider extends ServiceProvider
+class FlashMsgServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
