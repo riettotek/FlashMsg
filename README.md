@@ -41,4 +41,4 @@ then use that like so:
 ```
 <x-renderalerts/>
 ```
-By publishing the view component (be aware that u dont have another blade file named 'alertsmsg.blade.php' in the component folder)
+By publishing the view component (be aware that u dont have another blade file named 'renderalerts.blade.php' in the component folder)
