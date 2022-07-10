@@ -1,0 +1,53 @@
+{
+    "name": "riettotek/flashmsg",
+    "description": "Optional package for Laravel to implement global alert messages",
+    "type": "library",
+    "keywords": [
+        "laravel",
+        "session",
+        "session messages",
+        "flash messages",
+        "session flash messages",
+        "alert",
+        "alert messages"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mattias Mario Battista",
+            "email": "riettotek@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Riettotek\\Flashmsg\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Riettotek\\Flashmsg\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit tests"
+    },
+
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4|^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.3"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Riettotek\\Flashmsg\\Providers\\FlashmsgServiceProvider"
+            ],
+            "aliases": {
+                "Flashmsg": "Riettotek\\Flashmsg\\Flashmsg"
+            }
+        }
+    }
+}
