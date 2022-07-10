@@ -3,6 +3,7 @@
 namespace Riettotek\FlashMsg\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
 use Riettotek\FlashMsg\FlashMsg;
 
 class FlashMsgServiceProvider extends ServiceProvider
